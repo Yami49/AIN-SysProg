@@ -1,0 +1,236 @@
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ javac Bubblesort.java
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ java Bubblesort 10
+Bitte 10 ganze Zahlen eingeben: 675845028
+-57590302
+-2028758137
+1088100645
+1039224728
+1663624426
+-1031292912
+830476639
+1286698122
+1868140478
+Sortierte Zahlenfolge:
+-2028758137
+-1031292912
+-57590302
+675845028
+830476639
+1039224728
+1088100645
+1286698122
+1663624426
+1868140478
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ make bubblesort
+gcc -g -Wall -Wextra -Werror -std=c11 -pedantic    bubblesort.c   -o bubblesort
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ ./bubblesort 10
+10 ganze Zahlen eingeben:
+
+1564580791
+1672339281
+1728023837
+1974249596
+37174206
+759547922
+2132548211
+1206240002
+2127148533
+1021112399
+
+Sortierte Zahlenfolge:
+
+37174206
+759547922
+1021112399
+1206240002
+1564580791
+1672339281
+1728023837
+1974249596
+2127148533
+2132548211
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ valgrind ./bubblesort 10
+==211== Memcheck, a memory error detector
+==211== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==211== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==211== Command: ./bubblesort 10
+==211==
+==211== error calling PR_SET_PTRACER, vgdb might block
+10 ganze Zahlen eingeben:
+
+92428439
+283032846
+1202689377
+1090205710
+578640254
+1192516798
+1846672631
+1447278255
+1722202539
+200148652
+
+Sortierte Zahlenfolge:
+
+92428439
+200148652
+283032846
+578640254
+1090205710
+1192516798
+1202689377
+1447278255
+1722202539
+1846672631
+==211==
+==211== HEAP SUMMARY:
+==211==     in use at exit: 0 bytes in 0 blocks
+==211==   total heap usage: 3 allocs, 3 frees, 8,232 bytes allocated
+==211==
+==211== All heap blocks were freed -- no leaks are possible
+==211==
+==211== For lists of detected and suppressed errors, rerun with: -s
+==211== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ make cppcheck
+cppcheck --enable=warning,style --std=c11 bubblesort.c
+Checking bubblesort.c ...
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ g++ -g -fno-stack-protector -c bubblesort.c
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ sort -n out.txt | diff - out.txt
+
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time java Bubblesort 1000 < /dev/null > /dev/null
+
+real    0m0.180s
+user    0m0.172s
+sys     0m0.094s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time java Bubblesort 10000 < /dev/null > /dev/nul
+l
+
+real    0m0.530s
+user    0m0.609s
+sys     0m0.203s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time java Bubblesort 100000 < /dev/null > /dev/nu
+ll
+
+real    0m23.955s
+user    0m23.438s
+sys     0m0.828s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 1000 < /dev/null > /dev/null
+
+real    0m0.016s
+user    0m0.000s
+sys     0m0.016s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 10000 < /dev/null > /dev/null
+
+real    0m0.263s
+user    0m0.250s
+sys     0m0.016s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 100000 < /dev/null > /dev/null
+
+real    0m29.663s
+user    0m29.547s
+sys     0m0.031s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ make "CC=gcc -g -O2" clean all
+rm -f bubblesort bubblesort.o
+gcc -g -O2 -Wall -Wextra -Werror -std=c11 -pedantic   -c -o bubblesort.o bubblesort.c
+gcc -g -O2   bubblesort.o   -o bubblesort
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 1000 < /dev/null > /dev/null
+
+real    0m0.011s
+user    0m0.000s
+sys     0m0.016s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 10000 < /dev/null > /dev/null
+
+real    0m0.129s
+user    0m0.109s
+sys     0m0.031s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ time ./bubblesort 100000 < /dev/null > /dev/null
+
+real    0m14.823s
+user    0m14.828s
+sys     0m0.000s
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$
+
+
+//---- Kontrollfragen Manueller Test
+
+
+"Verhält sich das C-Programm bei allen Eingaben wie das Java-Programm?"
+
+Wenn man beim Java-Programm z.B. als Programmaufruf "java Bubblesort w" eingiebt,
+wirft das Programm eine NumberFormatException
+
+In der C Version wird lediglich die Fehlermeldung beim einlesen der Arraygroesse ausgegeben("Aufruf: ./bubblesort Anzahl")
+(das kommt daher, dass in der Bedingung ein !atoi(argv[1] steht))
+
+
+"Funktioniert die Fehlerbehandlung bei Speicherreservierung und Einlesen?"
+
+Ja, dass macht Sie
+
+==211== All heap blocks were freed -- no leaks are possible
+
+
+"Meldet valgrind Fehler?"
+
+Zum Programm meldet val´grind keine Fehler, jedoch taucht diese Meldung auf
+==211== error calling PR_SET_PTRACER, vgdb might block
+Ich weiß nicht was das bedeuted.
+
+
+"Meldet cppcheck Probleme?"
+
+Nein cppcheck meldet keine Fehler
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ make cppcheck
+cppcheck --enable=warning,style --std=c11 bubblesort.c
+Checking bubblesort.c ...
+
+
+"Lässt sich Ihr Programm auch mit g++ ohne Fehlermeldungen und Warnungen übersetzen?"
+
+Ja es lässt sich ohne Fehlermeldungen Übersetzen
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ g++ -g -fno-stack-protector -c bubblesort.c
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$
+
+
+
+//---- Kontrollfragen Automatisierter Test
+
+
+"Was liefert die obige Befehlsfolge, wenn Ihr bubblesort richtig sortiert hat?"
+
+Auf der Konsole wird niichts neues ausgeben.
+
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+georgi@LAPTOP-M826EI31:/mnt/c/programmieren/sypr-uebungen/aufgabe2$ sort -n out.txt | diff - out.txt
+
+
+
+//---- Kontrollfragen Laufzeitmessungen
+
+
+"Wächst die Ausführungszeit tatsächlich quadratisch mit der Array-Größe?"
+
+Ja Sie wächst quadratisch z.B. die Werte bei User von C-Test mit 10000 und 100000
+Elemente erkennt man denn zusammenhang.
+
+Test mit 10000:
+0.25 : 10000 = 2,5 * 10^-5
+
+Test mit 100000:
+29.547 : 100000 = 2,9547 * 10^-4
+
+"Ist das Java-Programm oder das C-Programm schneller? Können Sie sich den Unterschied erklären?"
+
+Zum größten Teil ist der C-Code schneller. Das liegt daran, dass C näher an Maschienensprache liegt.
+
+Quelle: https://careerkarma.com/blog/java-vs-c/#:~:text=Java%20vs%20C%3A%20Differences%20Compared%20and%20Contrasted,-Chris%20Petersen&text=C%20is%20a%20procedural%2C%20low,high%20level%2C%20and%20interpreted%20language.&text=Java%20is%20easier%20to%20learn,it's%20closer%20to%20machine%20code.
+
+
+"Ist das optimierte Programm erkennbar schneller?"
+
+Ja es ist in allen drei Test wessentlich schneller.

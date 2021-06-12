@@ -1,0 +1,141 @@
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ make aufgabe1
+gcc -g -fno-stack-protector -Wall -Wextra -Werror -std=c11 -pedantic    aufgabe1.c   -o aufgabe1
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ ./aufgabe1
+0x7fffc4d9670c | 4  | int                    | z0  | 123
+0x7fffc4d9670a | 2  | short int              | z1  | 12
+0x7fffc4d96700 | 8  | long int               | z2  | 123
+0x7fffc4d966f8 | 8  | long long int          | z3  | 123
+0x7fffc4d966f4 | 4  | unsigned int           | z4  | 4294967295
+0x7fffc4d966f2 | 2  | unsigned short int     | z5  | 65535
+0x7fffc4d966e8 | 8  | unsigned long int      | z6  | 16777215
+0x7fffc4d966e0 | 8  | unsigned long long int | z7  | 4294967295
+0x7fffc4d966dc | 4  | float                  | z8  | 3.140000
+0x7fffc4d966d0 | 8  | double                 | z9  | 3.140000e+00
+0x7fffc4d966c0 | 16 | long double            | z10 | 3.140000e+00
+0x7fffc4d966bf | 1  | char                   | z11 | g
+0x7fffc4d966be | 1  | signed char            | z12 | -49
+0x7fffc4d966bd | 1  | unsigned char          | z13 | 49
+0x7fffc4d966b0 | 8  | char*                  | z14 | Hallo
+0x7fffc4d966af | 1  | boolean                | z15 | 1
+
+sizeof(int) = 4 Byte
+sizeof(long int) = 8 Byte
+sizeof(char*) = 8 Byte
+sizeof(long long int) = 8 Byte
+
+LP64-Datenmodell
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ ./aufgabe1 | sort
+
+
+0x7fffe9c06d2f | 1  | boolean                | z15 | 1
+0x7fffe9c06d30 | 8  | char*                  | z14 | Hallo
+0x7fffe9c06d3d | 1  | unsigned char          | z13 | 49
+0x7fffe9c06d3e | 1  | signed char            | z12 | -49
+0x7fffe9c06d3f | 1  | char                   | z11 | g
+0x7fffe9c06d40 | 16 | long double            | z10 | 3.140000e+00
+0x7fffe9c06d50 | 8  | double                 | z9  | 3.140000e+00
+0x7fffe9c06d5c | 4  | float                  | z8  | 3.140000
+0x7fffe9c06d60 | 8  | unsigned long long int | z7  | 4294967295
+0x7fffe9c06d68 | 8  | unsigned long int      | z6  | 16777215
+0x7fffe9c06d72 | 2  | unsigned short int     | z5  | 65535
+0x7fffe9c06d74 | 4  | unsigned int           | z4  | 4294967295
+0x7fffe9c06d78 | 8  | long long int          | z3  | 123
+0x7fffe9c06d80 | 8  | long int               | z2  | 123
+0x7fffe9c06d8a | 2  | short int              | z1  | 12
+0x7fffe9c06d8c | 4  | int                    | z0  | 123
+LP64-Datenmodell
+sizeof(char*) = 8 Byte
+sizeof(int) = 4 Byte
+sizeof(long int) = 8 Byte
+sizeof(long long int) = 8 Byte
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ ./aufgabe1 | sort -r
+sizeof(long long int) = 8 Byte
+sizeof(long int) = 8 Byte
+sizeof(int) = 4 Byte
+sizeof(char*) = 8 Byte
+LP64-Datenmodell
+0x7ffff18f3bac | 4  | int                    | z0  | 123
+0x7ffff18f3baa | 2  | short int              | z1  | 12
+0x7ffff18f3ba0 | 8  | long int               | z2  | 123
+0x7ffff18f3b98 | 8  | long long int          | z3  | 123
+0x7ffff18f3b94 | 4  | unsigned int           | z4  | 4294967295
+0x7ffff18f3b92 | 2  | unsigned short int     | z5  | 65535
+0x7ffff18f3b88 | 8  | unsigned long int      | z6  | 16777215
+0x7ffff18f3b80 | 8  | unsigned long long int | z7  | 4294967295
+0x7ffff18f3b7c | 4  | float                  | z8  | 3.140000
+0x7ffff18f3b70 | 8  | double                 | z9  | 3.140000e+00
+0x7ffff18f3b60 | 16 | long double            | z10 | 3.140000e+00
+0x7ffff18f3b5f | 1  | char                   | z11 | g
+0x7ffff18f3b5e | 1  | signed char            | z12 | -49
+0x7ffff18f3b5d | 1  | unsigned char          | z13 | 49
+0x7ffff18f3b50 | 8  | char*                  | z14 | Hallo
+0x7ffff18f3b4f | 1  | boolean                | z15 | 1
+
+
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ make CC="g++ -fno-stack-protector" STD=c++11 clean aufgabe1
+rm -f aufgabe1 aufgabe1.o
+g++ -fno-stack-protector -Wall -Wextra -Werror -std=c++11 -pedantic    aufgabe1.c   -o aufgabe1
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ cppcheck --enable=warning,style --std=c11 aufgabe1.c
+Checking aufgabe1.c ...
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$ make cppcheck
+cppcheck --enable=warning,style --std=c11 aufgabe1.c
+Checking aufgabe1.c ...
+georgi@LAPTOP-M826EI31:/mnt/c/sypr-uebungen/Aufgabe1_Neu$
+
+
+//--------Protokollfragen
+
+./aufgabe1
+
+Ausgabe wie im Quellcode
+
+
+./aufgabe1 | sort
+
+Variable sortiert(bei kleinster Adresse beginnend) -> Datenmodell -> sizeof()-Werte
+
+
+./aufgabe1 | sort -r
+
+sizeof()-Werte -> Datenmodell -> Variablen rückwaerts sortiert
+
+"-r" steht fuer reverse
+
+Frage 2(Luecken):
+
+Die Luecken sind unbenutzter Speicher
+Werden eingefügt wenn die naechste Variable nicht auf einer
+durch sizeof() teilbaren Adresse liegen wuerde
+
+
+Frage 3(Speicherbelegung):
+
+93 Byte
+
+
+C++-Compiler:
+
+Fehler bei der Zeigerdefinition: char* z14 = "Hallo"
+Löung: const char* z14 = "Hallo"
+
+
+cppcheck:
+
+Bei mir meldete cppcheck folgende Fehler:
+
+1) sizeof()-Ausgabe mit Platzhalter "%zu"
+
+2) sizeof(int) abfrage redundant, da int immer 4 Byte belegt
+
+3) anstatt ->
+ 
+   int v1 = sizeof(long int);
+   ...;
+   if (v1 == 8 && ...) {
+   ...;
+   }
+
+   besser ->
+   if (sizeof(long int) == 8 && ...) {
+   ...;
+   }
